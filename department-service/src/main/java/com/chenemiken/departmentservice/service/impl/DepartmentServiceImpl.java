@@ -5,12 +5,13 @@ import com.chenemiken.departmentservice.entity.Department;
 import com.chenemiken.departmentservice.repository.DepartmentRepository;
 import com.chenemiken.departmentservice.service.DepartmentService;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class DepartmentServiceImpl  implements DepartmentService {
-
+  private ModelMapper modelMapper;
   private DepartmentRepository departmentRepository;
 
   public DepartmentDto saveDepartment(DepartmentDto departmentDto){
