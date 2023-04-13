@@ -1,4 +1,4 @@
-package com.chenemiken.employeeservice.exception;
+package com.chenemiken.departmentservice.exception;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

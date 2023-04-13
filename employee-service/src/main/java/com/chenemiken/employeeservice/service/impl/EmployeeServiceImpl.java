@@ -2,6 +2,7 @@ package com.chenemiken.employeeservice.service.impl;
 
 import com.chenemiken.employeeservice.dto.EmployeeDto;
 import com.chenemiken.employeeservice.entity.Employee;
+import com.chenemiken.employeeservice.exception.ResourceNotFoundException;
 import com.chenemiken.employeeservice.repository.EmployeeRepository;
 import com.chenemiken.employeeservice.service.EmployeeService;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeDto.getLastName(), employeeDto.getEmail());
 
     Employee savedEmployee = employeeRepository.save(employee);
+
     return new EmployeeDto(savedEmployee.getId(), savedEmployee.getFirstName(),
         savedEmployee.getLastName(), savedEmployee.getEmail());
 
@@ -25,7 +27,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
   @Override
   public EmployeeDto getEmployeeById(Long id) {
-    Employee employee = employeeRepository.findById(id).get();
+    Employee employee = employeeRepository.findById(id).orElseThrow(() ->
+        new ResourceNotFoundException(Employee.class.getCanonicalName(), "id", id.toString()));
+
     return new EmployeeDto(employee.getId(), employee.getFirstName(),
         employee.getLastName(), employee.getEmail());
   }

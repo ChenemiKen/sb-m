@@ -2,6 +2,7 @@ package com.chenemiken.departmentservice.service.impl;
 
 import com.chenemiken.departmentservice.dto.DepartmentDto;
 import com.chenemiken.departmentservice.entity.Department;
+import com.chenemiken.departmentservice.exception.ResourceNotFoundException;
 import com.chenemiken.departmentservice.repository.DepartmentRepository;
 import com.chenemiken.departmentservice.service.DepartmentService;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,9 @@ public class DepartmentServiceImpl  implements DepartmentService {
 
   public DepartmentDto getDepartmentByCode(String code) {
     Department department = departmentRepository.findByDepartmentCode(code);
+    if(department == null){
+      throw new ResourceNotFoundException("department", "code", code);
+    }
     return new DepartmentDto(
         department.getId(), department.getDepartmentName(),
         department.getDepartmentDescription(), department.getDepartmentCode()
