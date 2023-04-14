@@ -1,9 +1,10 @@
 package com.chenemiken.employeeservice.service;
 
+import com.chenemiken.employeeservice.dto.ApiResponseDto;
 import com.chenemiken.employeeservice.dto.EmployeeDto;
 
 public interface EmployeeService {
   EmployeeDto saveEmployee(EmployeeDto employeeDto);
 
-  EmployeeDto getEmployeeById(Long id);
+  ApiResponseDto getEmployeeById(Long id);
 }

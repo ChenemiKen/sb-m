@@ -1,5 +1,6 @@
 package com.chenemiken.employeeservice.controller;
 
+import com.chenemiken.employeeservice.dto.ApiResponseDto;
 import com.chenemiken.employeeservice.dto.EmployeeDto;
 import com.chenemiken.employeeservice.service.EmployeeService;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,8 @@ public class EmployeeController {
   }
 
   @GetMapping("{id}")
-  public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("id") Long id){
-    EmployeeDto employeeDto = employeeService.getEmployeeById(id);
-    return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+  public ResponseEntity<ApiResponseDto> getEmployee(@PathVariable("id") Long id){
+    ApiResponseDto apiResponseDto = employeeService.getEmployeeById(id);
+    return new ResponseEntity<>(apiResponseDto, HttpStatus.OK);
   }
 }
