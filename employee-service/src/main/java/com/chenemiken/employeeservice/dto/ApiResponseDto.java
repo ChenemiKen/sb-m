@@ -15,5 +15,6 @@ public class ApiResponseDto{
   private String lastName;
   private String email;
   private DepartmentDto department;
+  private OrganizationDto organization;
 
 }
